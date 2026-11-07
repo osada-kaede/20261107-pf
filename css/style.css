@@ -1,0 +1,257 @@
+@charset "utf-8";
+
+/* --- Base Styles --- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  line-height: 1.6;
+  background: #0c476b;
+  color: #fff;
+}
+
+a { color: inherit; text-decoration: none; transition: 0.3s; }
+img { max-width: 100%; height: auto; vertical-align: bottom; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* --- header --- */
+header {
+  background: #0a3a57;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(24, 230, 240, 0.3);
+  padding: 0 20px;
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ロゴと隠しボタンのコンテナ */
+.logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-center {
+  max-height: 80px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(24, 230, 240, 0.4));
+  cursor: pointer;
+  transition: all 0.1s;
+  z-index: 10;
+}
+
+
+/* --- Main Visual --- */
+.main-visual {
+  background: linear-gradient(135deg, #0c476b 0%, #051a29 100%);
+  padding: 120px 0;
+  text-align: center;
+  border-bottom: 2px solid #18e6f0;
+}
+
+.main-visual h1 {
+  font-size: clamp(40px, 10vw, 80px);
+  margin: 0;
+  letter-spacing: 0.15em;
+  color: #18e6f0;
+  text-shadow: 0 0 20px rgba(24, 230, 240, 0.5);
+  font-weight: 900;
+}
+
+/* --- sections --- */
+section { padding: 80px 0; }
+h2 {
+  background: rgba(0, 0, 0, 0.2);
+  color: #18e6f0;
+  text-align: center;
+  font-size: 32px;
+  margin: 0 0 50px 0;
+  padding: 25px 0;
+  border-top: 1px solid rgba(24, 230, 240, 0.2);
+  border-bottom: 1px solid rgba(24, 230, 240, 0.2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* --- profile --- */
+.profile-flex { display: flex; flex-wrap: wrap; gap: 30px; }
+.mibunn {
+  flex: 1; min-width: 300px; background: rgba(0, 0, 0, 0.3);
+  padding: 40px 20px; text-align: center; display: flex;
+  flex-direction: column; align-items: center; border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-icon {
+  width: 180px; height: 180px; border-radius: 50%;
+  margin-bottom: 20px; object-fit: cover; border: 3px solid #18e6f0;
+  box-shadow: 0 0 15px rgba(24, 230, 240, 0.2);
+  transition: transform 0.5s ease-out;
+}
+
+/* アイコン回転アニメーション */
+/* @keyframes spin-start { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-loop { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.profile-icon:hover {
+  animation: spin-start 0.8s ease-in forwards, spin-loop 0.5s linear infinite 0.8s;
+} */
+
+.my-name { font-size: 24px; font-weight: bold; }
+.my-intro { 
+  color: #a0ced0; 
+  margin-top: 20px; 
+  font-size: 14px;
+  text-align: left; 
+}
+
+.iroiro {
+  flex: 2; min-width: 300px; background: rgba(0, 0, 0, 0.3);
+  padding: 40px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.s { text-align: center; color: #18e6f0; font-size: 22px; margin-bottom: 35px; font-weight: bold; }
+.skill-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 50px; }
+.skill-item { width: 140px; text-align: center; }
+.skill-item img { width: 50px; height: 50px; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2)); }
+.skill-item:hover img { animation: spin-start 0.6s ease-in forwards, spin-loop 0.2s linear infinite 0.6s; }
+
+.c-name { font-weight: bold; color: #18e6f0; font-size: 14px; margin-bottom: 5px; }
+.set { font-size: 11px; color: #bbb; line-height: 1.4; }
+
+.syoukai-grid { display: flex; flex-wrap: wrap; gap: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; }
+.syoukai-col { flex: 1; min-width: 200px; }
+.sy { font-size: 14px; border-left: 4px solid #18e6f0; padding-left: 12px; color: #18e6f0; margin: 20px 0 5px; }
+.sc { margin: 0; padding-left: 16px; font-size: 15px; color: #eee; }
+
+/* --- ギャラリー全体のレイアウト（カードが並ぶ外枠） --- */
+/* --- gallery --- */
+.gallery { 
+  /* gridのまま「1つの列（1カラム）」として縦に並べる設定にします */
+  display: grid; 
+  grid-template-columns: 1fr; /* 全体を1列にする */
+  
+  /* カードが横に広がりすぎないように最大幅を制限（お好みで調整してください） */
+  max-width: 1100px; 
+  
+  /* 制限したカード枠を画面の中央に寄せます */
+  margin: 0 auto; 
+  
+  gap: 30px; /* 縦の隙間30pxはそのまま維持 */
+}
+
+/* --- カード単体の基本スタイル --- */
+.card {
+  /* 背景色：透明度95%の白（ほんのり薄い白を載せることで高級感を出す） */
+  background: rgba(255, 255, 255, 0.05); 
+  
+  /* 枠線：太さ1pxの実線で、透明度80%の薄い水色（ネオンブルー） */
+  border: 1px solid rgba(24, 230, 240, 0.2);
+  
+  /* フレックスボックスレイアウトを使用することを宣言 */
+  display: flex; 
+  
+  /* 中身（画像とテキスト）の並び方向を「左から右（横並び）」に設定 */
+  flex-direction: row; 
+  
+  /* アニメーション：すべての変化（移動・色など）を0.4秒かけて、滑らか（ease）に変化させる */
+  transition: all 0.4s ease;
+  
+  /* はみ出し防止：カードからはみ出た部分（ホバーして拡大した画像など）を非表示にする */
+  overflow: hidden; 
+  
+  /* 角丸：カードの四隅の角を10px丸くする */
+  border-radius: 10px;
+  
+  /* 高さ固定：横長カードとしての見栄えを保つため、高さを200pxに固定 */
+  height: 250px; 
+}
+
+/* --- カードにマウスを乗せたとき（ホバー時）のエフェクト --- */
+.card:hover { 
+  /* 上方向に8pxフワッと移動させる（浮き上がるような視覚効果） */
+  transform: translateY(-8px); 
+  
+  /* 枠線の色を、不透明な鮮やかな水色（#18e6f0）に変更して発光させる */
+  border-color: #18e6f0; 
+  
+  /* 背景色を少しだけ明るくする（透明度92%の白にする） */
+  background: rgba(255, 255, 255, 0.08); 
+  
+  /* 影（グロウ効果）：カードの下方向に、水色のぼんやりとした光の影を落とす
+     （X軸に0px、Y軸に10px、ぼかし幅30px、透明度85%の水色） */
+  box-shadow: 0 10px 30px rgba(24, 230, 240, 0.15); 
+}
+
+/* --- カード内の画像スタイル --- */
+.card img { 
+  /* 画像の横幅をカード全体の「40%」に制限（左側4割が画像エリアになる） */
+  width: 40%; 
+  
+  /* 画像の縦幅をカード全体（100% = 200px）に合わせる */
+  height: 100%; 
+  
+  /* トリミング設定：画像の縦横比を保ったまま、指定したサイズ（40%×100%）に綺麗に収める */
+  object-fit: cover; 
+  
+  /* アニメーション：画像の変化（拡大など）を0.4秒かけて滑らかに変化させる */
+  transition: transform 0.4s ease; 
+}
+
+/* --- カードにマウスが乗ったときの「画像」の連動エフェクト --- */
+.card:hover img { 
+  /* 画像の大きさを1.05倍に拡大する（カード枠内でズームインする演出） */
+  transform: scale(1.05); 
+}
+
+/* --- 画像の右側にある文字エリア（h3とpを囲む枠） --- */
+.frame { 
+  padding: 20px; 
+  /* ★重要：h3とpを「上から下へ（縦並び）」配置するために column に変更 */
+  display: flex; 
+  flex-direction: column; 
+  
+  /* 縦並びにしたので、上下の中央寄せを設定 */
+  justify-content: center; 
+  /* 左寄せ（見出しと説明文の頭を揃える）にします。中央寄せがよければ center にしてください */
+  align-items: flex-start; 
+  /* テキストの配置も左寄せに合わせます */
+  text-align: left; 
+  
+  border-left: 1px solid rgba(24, 230, 240, 0.2); 
+  border-top: none; 
+  flex-grow: 1; 
+}
+
+/* --- 【新設】文字エリアの中のタイトル（h3） --- */
+.frame h3 {
+  margin: 0 0 10px 0; /* 下側にだけ10pxの隙間をあけて、説明文と離す */
+  color: #fff; /* タイトルはパキッと白文字に */
+  font-size: 1.2rem; /* 文字の大きさ（お好みで調整してください） */
+  font-weight: bold; 
+  letter-spacing: 0.05em; 
+}
+
+/* --- 文字エリアの中の説明文（p） --- */
+.cardp { 
+  margin: 0; 
+  /* 説明文はタイトルより少し小さく、薄い色（不透明度70%の白）にするとメリハリが出ます */
+  color: rgba(255, 255, 255, 0.7); 
+  font-size: 0.9rem; 
+  font-weight: normal; /* 説明文なので普通の太さに */
+  line-height: 1.5; /* 行間を少し広げて読みやすく */
+}
+
+/* --- footer --- */
+footer { background: #0a3a57; color: rgba(255, 255, 255, 0.3); text-align: center; padding: 40px 0; font-size: 12px; border-top: 1px solid rgba(24, 230, 240, 0.2); }
